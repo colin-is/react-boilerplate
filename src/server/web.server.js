@@ -1,9 +1,11 @@
-const express = require('express')
+let express = require('express')
+
 export default class WebServer {
   constructor () {
     this.app = express()
     this.app.use(express.static('dist/public'))
   }
+
   start () {
     return new Promise((resolve, reject) => {
       try {
@@ -16,6 +18,7 @@ export default class WebServer {
       }
     })
   }
+
   stop () {
     return new Promise((resolve, reject) => {
       try {
@@ -23,7 +26,7 @@ export default class WebServer {
           resolve()
         })
       } catch (e) {
-        console.error(e.message)
+        console.error(e)
         reject(e)
       }
     })
